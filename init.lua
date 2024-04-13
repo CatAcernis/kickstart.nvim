@@ -190,6 +190,10 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Use SHIFT+<hl> to switch between buffers
+vim.keymap.set('n', '<S-l>', ':bnext <CR>', { desc = 'Move focus to the next buffer' })
+vim.keymap.set('n', '<S-h>', ':bprevious <CR>', { desc = 'Move fucus to the previous buffer' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -793,6 +797,23 @@ require('lazy').setup({
       statusline.section_location = function()
         return '%2l:%-2v'
       end
+
+      -- Tabline custom
+      --
+      local tabline = require 'mini.tabline'
+      -- No need to copy this inside `setup()`. Will be used automatically.
+      tabline.setup {
+        -- Whether to show file icons (requires 'nvim-tree/nvim-web-devicons')
+        show_icons = true,
+
+        -- Whether to set Vim's settings for tabline (make it always shown and
+        -- allow hidden buffers)
+        set_vim_settings = true,
+
+        -- Where to show tabpage section in case of multiple vim tabpages.
+        -- One of 'left', 'right', 'none'.
+        tabpage_section = 'left',
+      }
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
