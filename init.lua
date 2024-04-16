@@ -798,7 +798,7 @@ require('lazy').setup({
         return '%2l:%-2v'
       end
 
-      -- Tabline custom
+      -- Tabline customization
       --
       local tabline = require 'mini.tabline'
       -- No need to copy this inside `setup()`. Will be used automatically.
